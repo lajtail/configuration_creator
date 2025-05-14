@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "9f7ss/aWIrY=",
+  "dgSpecHash": "sSFL7nD8Mts=",
   "success": true,
   "projectFilePath": "C:\\Users\\lajtai\\source\\repos\\configuration_creator\\configuration_creator.Core\\configuration_creator.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lajtai\\.nuget\\packages\\exceldatareader\\3.7.0\\exceldatareader.3.7.0.nupkg.sha512",
+    "C:\\Users\\lajtai\\.nuget\\packages\\exceldatareader.dataset\\3.7.0\\exceldatareader.dataset.3.7.0.nupkg.sha512",
     "C:\\Users\\lajtai\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\lajtai\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\lajtai\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
