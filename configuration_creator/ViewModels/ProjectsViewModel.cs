@@ -1,72 +1,50 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
 using System.Windows.Input;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
 using configuration_creator.Contracts.Services;
 using configuration_creator.Contracts.ViewModels;
+using configuration_creator.Core.Contracts.Services;
 using configuration_creator.Core.Models;
-using configuration_creator.Core.Services;
 
 namespace configuration_creator.ViewModels;
 
 public class ProjectsViewModel : ObservableObject, INavigationAware
 {
     private readonly INavigationService _navigationService;
-    private readonly ExcelService _excelService;
+    private readonly ISampleDataService _sampleDataService;
     private ICommand _navigateToDetailCommand;
-    private ICommand _newProjectCommand;
 
-    public ObservableCollection<ProjectModel> Projects { get; } = new();
+    public ICommand NavigateToDetailCommand => _navigateToDetailCommand ?? (_navigateToDetailCommand = new RelayCommand<SampleOrder>(NavigateToDetail));
 
-    public ICommand NavigateToDetailCommand =>
-        _navigateToDetailCommand ??= new RelayCommand<ProjectModel>(NavigateToDetail);
+    public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
 
-    public ICommand NewProjectCommand =>
-        _newProjectCommand ??= new RelayCommand(OnNewProject);
-
-    public ProjectsViewModel(ExcelService excelService, INavigationService navigationService)
+    public ProjectsViewModel(ISampleDataService sampleDataService, INavigationService navigationService)
     {
-        _excelService = excelService;
+        _sampleDataService = sampleDataService;
         _navigationService = navigationService;
     }
 
-    public void OnNavigatedTo(object parameter)
+    public async void OnNavigatedTo(object parameter)
     {
-        Projects.Clear();
+        Source.Clear();
 
-        
-        var path = Path.Combine(
-            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-            "configuration_creator.Core",
-            "Data",
-            "Configuration_Articles.xlsm");
-
-        var projects = _excelService.ReadProjects(path);
-
-        foreach (var project in projects)
+        // Replace this with your actual data
+        var data = await _sampleDataService.GetContentGridDataAsync();
+        foreach (var item in data)
         {
-            Projects.Add(project);
-        }
-
-    }
-
-    public void OnNavigatedFrom() { }
-
-    private void NavigateToDetail(ProjectModel project)
-    {
-        if (project != null)
-        {
-            _navigationService.NavigateTo(
-                typeof(ProjectsDetailViewModel).FullName,
-                project.Client);
+            Source.Add(item);
         }
     }
 
-    private void OnNewProject()
+    public void OnNavigatedFrom()
     {
-        // Új projekt létrehozási logika
-        _navigationService.NavigateTo(typeof(ProjectsDetailViewModel).FullName, null);
+    }
+
+    private void NavigateToDetail(SampleOrder order)
+    {
+        _navigationService.NavigateTo(typeof(MidDetailViewModel).FullName, order.OrderID);
     }
 }
