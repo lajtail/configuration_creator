@@ -20,3 +20,4 @@ C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\ob
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.csproj.CoreCompileInputs.cache
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.dll
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.pdb
+C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.sourcelink.json
