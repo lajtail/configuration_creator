@@ -10,16 +10,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <None Remove="Data\Configuration_Articles.xlsm" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Content Include="Data\Configuration_Articles.xlsm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
