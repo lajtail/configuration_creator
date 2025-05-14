@@ -12,6 +12,7 @@
     mc:Ignorable="d"
     MinWidth="500"
     MinHeight="350"
+    WindowState="Maximized"
     Title="{x:Static properties:Resources.AppDisplayName}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -48,7 +49,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock
                             Grid.Column="0"
-                            FontSize="16"
+                            FontSize="24"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontFamily="Segoe MDL2 Assets"
@@ -94,7 +95,7 @@
         <controls:HamburgerMenu
             x:Name="hamburgerMenu"
             HamburgerButtonName="{x:Static properties:Resources.ShellHamburgerButtonName}"
-            IsPaneOpen="False"
+            IsPaneOpen="True"
             DisplayMode="CompactInline"
             ItemsSource="{Binding MenuItems}"
             SelectedItem="{Binding SelectedMenuItem}"

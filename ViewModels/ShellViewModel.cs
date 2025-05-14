@@ -37,13 +37,13 @@ public class ShellViewModel : ObservableObject
     // TODO: Change the icons and titles for all HamburgerMenuItems here.
     public ObservableCollection<HamburgerMenuItem> MenuItems { get; } = new ObservableCollection<HamburgerMenuItem>()
     {
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellProjectsPage, Glyph = "\uE8A5", TargetPageType = typeof(ProjectsViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellConfPage, Glyph = "\uE8A5", TargetPageType = typeof(ConfViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellParamsPage, Glyph = "\uE8A5", TargetPageType = typeof(ParamsViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellPersPage, Glyph = "\uE8A5", TargetPageType = typeof(PersViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellGeofencePage, Glyph = "\uE8A5", TargetPageType = typeof(GeofenceViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellPhrasesPage, Glyph = "\uE8A5", TargetPageType = typeof(PhrasesViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellMidPage, Glyph = "\uE8A5", TargetPageType = typeof(MidViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellProjectsPage, Glyph = "\uE8F1", TargetPageType = typeof(ProjectsViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellConfPage, Glyph = "\uE90F", TargetPageType = typeof(ConfViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellParamsPage, Glyph = "\uE9E9", TargetPageType = typeof(ParamsViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellPersPage, Glyph = "\uE771", TargetPageType = typeof(PersViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellGeofencePage, Glyph = "\uE909", TargetPageType = typeof(GeofenceViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellPhrasesPage, Glyph = "\uE9B1", TargetPageType = typeof(PhrasesViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellMidPage, Glyph = "\uE950", TargetPageType = typeof(MidViewModel) },
     };
 
     public ObservableCollection<HamburgerMenuItem> OptionMenuItems { get; } = new ObservableCollection<HamburgerMenuItem>()
