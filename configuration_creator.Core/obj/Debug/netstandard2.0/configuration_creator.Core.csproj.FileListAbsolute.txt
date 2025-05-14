@@ -1,14 +1,3 @@
-C:\Users\lajtai\source\repos\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.deps.json
-C:\Users\lajtai\source\repos\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.dll
-C:\Users\lajtai\source\repos\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.pdb
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.csproj.AssemblyReference.cache
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.AssemblyInfoInputs.cache
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.AssemblyInfo.cs
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.csproj.CoreCompileInputs.cache
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.dll
-C:\Users\lajtai\source\repos\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.pdb
-C:\Users\lajtai\source\repos\configuration_creator.Core\bin\Debug\netstandard2.0\Data\Configuration_Articles.xlsm
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\Data\Configuration_Articles.xlsm
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.deps.json
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.dll
@@ -18,6 +7,6 @@ C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\ob
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.AssemblyInfoInputs.cache
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.AssemblyInfo.cs
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.csproj.CoreCompileInputs.cache
+C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.sourcelink.json
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.dll
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.pdb
-C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\obj\Debug\netstandard2.0\configuration_creator.Core.sourcelink.json

@@ -16,7 +16,11 @@ public class ExcelService
             {
                 ConfigureDataTable = _ => new ExcelDataTableConfiguration()
                 {
-                    UseHeaderRow = true
+                    UseHeaderRow = true, // If the header is in the first row
+                    ReadHeaderRow = rowReader => {
+                        // Skip header if needed
+                        rowReader.Read();
+                    }
                 }
             });
 

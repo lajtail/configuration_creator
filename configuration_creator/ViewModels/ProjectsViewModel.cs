@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -35,6 +36,7 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
     {
         Projects.Clear();
 
+        
         var path = Path.Combine(
             Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
             "configuration_creator.Core",
@@ -47,6 +49,7 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
         {
             Projects.Add(project);
         }
+
     }
 
     public void OnNavigatedFrom() { }
