@@ -36,7 +36,13 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<Content Include="Data\Configuration_Articles.xlsm">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

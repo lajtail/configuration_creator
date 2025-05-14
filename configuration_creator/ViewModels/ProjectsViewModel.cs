@@ -36,7 +36,8 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
         Projects.Clear();
 
         var path = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
+            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
+            "configuration_creator.Core",
             "Data",
             "Configuration_Articles.xlsm");
 
