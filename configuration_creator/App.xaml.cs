@@ -31,12 +31,17 @@ public partial class App : Application
         where T : class
         => _host.Services.GetService(typeof(T)) as T;
 
+    public static List<ExcelRowData> ExcelData { get; private set; }
+
     public App()
     {
     }
 
     private async void OnStartup(object sender, StartupEventArgs e)
     {
+        //Needed to be able to read Excel files
+        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
         var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
         // For more information about .NET generic host see  https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
@@ -49,6 +54,21 @@ public partial class App : Application
                 .Build();
 
         await _host.StartAsync();
+
+        try
+        {
+            var excelService = new ExcelService();
+            //This works from VS directly
+            //var excelPath = Path.Combine(appLocation, "Data", "Configuration_Articles.xlsm");
+            var excelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Configuration_Articles.xlsm");
+
+            ExcelData = excelService.ReadAll(excelPath);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Hiba az Excel beolvasásakor: {ex.Message}");
+            ExcelData = new List<ExcelRowData>();
+        }
     }
 
     private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
@@ -121,7 +141,6 @@ public partial class App : Application
 
     private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        // TODO: Please log and handle the exception as appropriate to your scenario
-        // For more info see https://docs.microsoft.com/dotnet/api/system.windows.application.dispatcherunhandledexception?view=netcore-3.0
+        MessageBox.Show($"Váratlan hiba történt: {e.Exception.Message}\n\n{e.Exception.StackTrace}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 }

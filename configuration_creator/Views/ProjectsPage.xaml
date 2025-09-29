@@ -15,20 +15,36 @@
     <Page.Resources>
         <DataTemplate x:Key="contentGridItemTemplate">
             <Grid
-                Width="160"
-                Height="160"
+                Width="300"
+                Height="300"
                 Background="{DynamicResource MahApps.Brushes.Gray10}">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{StaticResource MediumLeftTopRightBottomMargin}">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12">
                     <TextBlock
-                        FontSize="24"
-                        Text="{Binding Symbol}"
+                        FontSize="32"
+                        Text="{Binding Client}"
                         HorizontalAlignment="Center"
-                        FontFamily="Segoe MDL2 Assets" />
+                        FontWeight="SemiBold"
+                        TextWrapping="Wrap"
+                        TextAlignment="Center"
+                        MaxWidth="280"/>
                     <TextBlock
-                        Margin="{StaticResource XXSmallTopMargin}"
+                        Margin="0,12,0,0"
                         HorizontalAlignment="Center"
                         Style="{StaticResource BodyTextStyle}"
-                        Text="{Binding Company}" />
+                        FontSize="24"
+                        Text="{Binding CC}"
+                        TextWrapping="Wrap"
+                        TextAlignment="Center"
+                        MaxWidth="280"/>
+                    <TextBlock
+                        Margin="0,50,0,0"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource BodyTextStyle}"
+                        FontSize="16"
+                        Text="{Binding ProjectInfo}"
+                        TextWrapping="Wrap"
+                        TextAlignment="Center"
+                        MaxWidth="280"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -48,11 +64,9 @@
             Margin="{StaticResource SmallLeftMargin}"
             SelectionMode="Single"
             ItemsSource="{Binding Source}"
+            SelectedItem="{Binding SelectedTile, Mode=TwoWay}"
             Style="{StaticResource ContentGridListViewStyle}"
             ItemTemplate="{StaticResource contentGridItemTemplate}">
-            <i:Interaction.Behaviors>
-                <behaviors:ListViewItemSelectionBehavior Command="{Binding NavigateToDetailCommand}" />
-            </i:Interaction.Behaviors>
         </ListView>
     </Grid>
 </Page>

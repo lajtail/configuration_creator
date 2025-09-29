@@ -1,4 +1,3 @@
-C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\Data\Configuration_Articles.xlsm
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.deps.json
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.dll
 C:\Users\lajtai\source\repos\configuration_creator\configuration_creator.Core\bin\Debug\netstandard2.0\configuration_creator.Core.pdb
