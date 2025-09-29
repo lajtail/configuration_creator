@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows.Input;
+using System.Linq;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -11,14 +13,15 @@ using configuration_creator.Core.Models;
 
 namespace configuration_creator.ViewModels;
 
-// ÚJ: Egy egyszerű modell a csempékhez (ha nincs már ilyen a projektben)
+// Simple model for the tiles
 public class ProjectTileModel
 {
     public string Client { get; set; }
     public string CC { get; set; }
     public string ProjectInfo { get; set; }
+    // Store a reference to the original Excel row for details
+    public Dictionary<string, string> RowCells { get; set; }
 }
-
 
 public class ProjectsViewModel : ObservableObject, INavigationAware
 {
@@ -27,10 +30,18 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
     private ICommand _navigateToDetailCommand;
 
     public ICommand NavigateToDetailCommand => _navigateToDetailCommand ?? (_navigateToDetailCommand = new RelayCommand<ProjectTileModel>(NavigateToDetail));
-    // CHANGE: Using new ProjectTieModel for the tiles
+
     public ObservableCollection<ProjectTileModel> Source { get; } = new ObservableCollection<ProjectTileModel>();
 
-    // Selected tile property
+    // List of column names for the details panel
+    private List<string> _columns = new List<string>();
+    public List<string> Columns
+    {
+        get => _columns;
+        set => SetProperty(ref _columns, value);
+    }
+
+    // The selected tile (project)
     private ProjectTileModel _selectedTile;
     public ProjectTileModel SelectedTile
     {
@@ -39,12 +50,22 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
         {
             if (SetProperty(ref _selectedTile, value))
             {
+                // Update the details dictionary when selection changes
+                SelectedRowCells = value?.RowCells;
                 if (value != null)
                 {
                     NavigateToDetailCommand.Execute(value);
                 }
             }
         }
+    }
+
+    // The dictionary of cell values for the selected row
+    private Dictionary<string, string> _selectedRowCells;
+    public Dictionary<string, string> SelectedRowCells
+    {
+        get => _selectedRowCells;
+        set => SetProperty(ref _selectedRowCells, value);
     }
 
     public ProjectsViewModel(ISampleDataService sampleDataService, INavigationService navigationService)
@@ -56,27 +77,34 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
     public void OnNavigatedTo(object parameter)
     {
         Source.Clear();
+        Columns = new List<string>();
 
         // LOADING Excel Data
         if (App.ExcelData != null)
         {
+            // Get all unique column names from the first row (or all rows if needed)
+            var allColumns = new HashSet<string>();
             foreach (var row in App.ExcelData)
             {
-                // Check if Client, CC, Charon, Charon Revision, OBU ArtNum exists in the row
+                foreach (var col in row.Cells.Keys)
+                    allColumns.Add(col);
+            }
+            Columns = allColumns.ToList();
+
+            foreach (var row in App.ExcelData)
+            {
                 row.Cells.TryGetValue("Client", out string client);
                 row.Cells.TryGetValue("CC", out string cc);
-                row.Cells.TryGetValue("Charon", out string charon);
-                row.Cells.TryGetValue("Charon\nRevision", out string revision);
                 row.Cells.TryGetValue("OBU\nArtNum1", out string obuartnum);
 
-                // Adding it if Client is not empty
                 if (!string.IsNullOrWhiteSpace(client))
                 {
                     Source.Add(new ProjectTileModel
                     {
                         Client = client,
                         CC = cc,
-                        ProjectInfo = "8633 " + obuartnum + '\n' + "CHR ver: " + charon + " (rev. " + revision + ")"
+                        ProjectInfo = "8633 " + obuartnum,
+                        RowCells = row.Cells // Store the full row for details
                     });
                 }
             }
@@ -87,10 +115,8 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
     {
     }
 
-    // Modified command, to expect ProjectTileModel
     private void NavigateToDetail(ProjectTileModel tile)
     {
-        // Itt átadhatod a szükséges adatokat a részletező oldalnak
-        // Például: _navigationService.NavigateTo(typeof(MidDetailViewModel).FullName, tile.Client);
+        // You can use this for navigation if needed
     }
 }
