@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Linq;
@@ -14,8 +14,16 @@ using configuration_creator.Core.Models;
 namespace configuration_creator.ViewModels;
 
 // Simple model for the tiles
-public class ProjectTileModel
+public class ProjectTileModel : ObservableObject
 {
+
+    private bool _isSelected;
+    public bool IsSelected
+    {
+        get => _isSelected;
+        set => SetProperty(ref _isSelected, value);
+    }
+
     public string Client { get; set; }
     public string CC { get; set; }
     public string ProjectInfo { get; set; }
@@ -43,6 +51,8 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
 
     // The selected tile (project)
     private ProjectTileModel _selectedTile;
+    private static ProjectTileModel _lastSelectedTile;
+
     public ProjectTileModel SelectedTile
     {
         get => _selectedTile;
@@ -50,8 +60,12 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
         {
             if (SetProperty(ref _selectedTile, value))
             {
-                // Update the details dictionary when selection changes
+                foreach (var tile in Source)
+                {
+                    tile.IsSelected = tile == value;
+                }
                 SelectedRowCells = value?.RowCells;
+                _lastSelectedTile = value;
                 if (value != null)
                 {
                     NavigateToDetailCommand.Execute(value);
@@ -108,12 +122,19 @@ public class ProjectsViewModel : ObservableObject, INavigationAware
                     });
                 }
             }
+
+            if (_lastSelectedTile != null)
+            {
+                var match = Source.FirstOrDefault(t => t.Client == _lastSelectedTile.Client && t.CC == _lastSelectedTile.CC);
+                if (match != null)
+                {
+                    SelectedTile = match;
+                }
+            }
         }
     }
 
-    public void OnNavigatedFrom()
-    {
-    }
+    public void OnNavigatedFrom() { }
 
     private void NavigateToDetail(ProjectTileModel tile)
     {
