@@ -18,8 +18,8 @@ namespace configuration_creator.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            // Implement if you want two-way editing
-            return null;
+            // Return the updated value and key so the view model can handle it
+            return new object[] { value, parameter };
         }
     }
 }
